@@ -19,17 +19,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
   sections.forEach(s => observer.observe(s));
-
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.portfolio-item');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      items.forEach(item => {
-        item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
-      });
-    });
-  });
 });
