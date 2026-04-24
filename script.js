@@ -1,28 +1,35 @@
-// ✈️ Анимация самолётика (ЗАМЕДЛЕНА + БЕЗ БОМБАРДИРОВКИ)
-  function launchPlane(btn) {
-    // Если самолётик уже летит — удаляем его, чтобы не было наложения
-    const existingPlane = document.querySelector('.flying-plane');
-    if (existingPlane) existingPlane.remove();
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) {
+        const offset = t.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(s => observer.observe(s));
 
-    const plane = document.createElement('div');
-    plane.className = 'flying-plane';
-    plane.innerHTML = '✈️';
-    
-    const btnRect = btn.getBoundingClientRect();
-    const cartRect = cartBtn.getBoundingClientRect();
-    
-    const item = btn.closest('.menu-item');
-    plane.style.color = item.dataset.color || '#d4a373';
-
-    plane.style.left = `${btnRect.left + btnRect.width / 2}px`;
-    plane.style.top = `${btnRect.top + btnRect.height / 2}px`;
-    document.body.appendChild(plane);
-
-    const tx = cartRect.left + cartRect.width / 2 - (btnRect.left + btnRect.width / 2);
-    const ty = cartRect.top + cartRect.height / 2 - (btnRect.top + btnRect.height / 2);
-    plane.style.setProperty('--tx', `${tx}px`);
-    plane.style.setProperty('--ty', `${ty}px`);
-
-    requestAnimationFrame(() => plane.classList.add('fly'));
-    setTimeout(() => plane.remove(), 1500);
-  }
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
+      });
+    });
+  });
+});
