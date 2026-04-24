@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 🛒 Корзина
   const cart = [];
   const cartPanel = document.getElementById('cart-panel');
   const cartOverlay = document.getElementById('cart-overlay');
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartCountEl = document.querySelector('.cart-count');
   const checkoutBtn = document.getElementById('checkout-btn');
 
-  // 📦 Модальное окно
   const itemModal = document.getElementById('item-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalComp = document.getElementById('modal-composition');
@@ -19,11 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalClose = document.querySelector('.modal-close');
   let currentItem = null;
 
-  // Открытие карточки / добавление
+  // Логика кликов по карточкам
   document.getElementById('menu-grid').addEventListener('click', e => {
     const item = e.target.closest('.menu-item');
     if (!item) return;
-    if (e.target.classList.contains('add-btn')) { addToCart(item.dataset.id); return; }
+
+    // Если нажали на "+" — только добавляем и запускаем анимацию
+    if (e.target.classList.contains('add-btn')) {
+      e.stopPropagation();
+      addToCart(item.dataset.id);
+      launchPlane(e.target);
+      return;
+    }
+    // Иначе открываем модалку
     openItemModal(item);
   });
 
@@ -39,15 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
   itemModal.onclick = e => { if(e.target === itemModal) closeItemModal(); };
   modalAddBtn.onclick = () => { addToCart(currentItem.id); closeItemModal(); };
 
-  // Логика корзины
+  // Корзина
   function addToCart(id) {
-    const existing = cart.find(i => i.id === id);
-    if (existing) existing.qty++;
-    else cart.push({ ...getMenuData(id), qty: 1 });
+    const existing = cart.find(i => i.id === id);    if (existing) existing.qty++;
+    else cart.push({ id, name: getMenuData(id).name, price: getMenuData(id).price, qty: 1 });
     renderCart();
-    // Анимация кнопки корзины
-    cartBtn.style.transform = 'scale(1.2)';
-    setTimeout(() => cartBtn.style.transform = '', 200);  }
+    cartBtn.classList.add('pulse');
+    setTimeout(() => cartBtn.classList.remove('pulse'), 400);
+  }
 
   function getMenuData(id) {
     const el = document.querySelector(`.menu-item[data-id="${id}"]`);
@@ -57,20 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderCart() {
     cartItemsEl.innerHTML = '';
     if (cart.length === 0) { cartItemsEl.innerHTML = '<p class="cart-empty">Корзина пуста</p>'; cartTotalEl.textContent = '0 ₽'; cartCountEl.textContent = '0'; return; }
-    
     cart.forEach(item => {
       const div = document.createElement('div');
       div.className = 'cart-item';
-      div.innerHTML = `
-        <div class="cart-item-info"><span class="cart-item-name">${item.name}</span><span class="cart-item-price">${item.price} ₽ × ${item.qty}</span></div>
-        <div class="cart-item-controls">
-          <button class="qty-btn minus" data-id="${item.id}">−</button>
-          <button class="qty-btn plus" data-id="${item.id}">+</button>
-          <button class="remove-btn" data-id="${item.id}">✕</button>
-        </div>`;
+      div.innerHTML = `<div class="cart-item-info"><span class="cart-item-name">${item.name}</span><span class="cart-item-price">${item.price} ₽ × ${item.qty}</span></div>
+        <div class="cart-item-controls"><button class="qty-btn minus" data-id="${item.id}">−</button><button class="qty-btn plus" data-id="${item.id}">+</button><button class="remove-btn" data-id="${item.id}">✕</button></div>`;
       cartItemsEl.appendChild(div);
     });
-    
     const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
     cartTotalEl.textContent = `${total} ₽`;
     cartCountEl.textContent = cart.reduce((sum, i) => sum + i.qty, 0);
@@ -91,15 +89,40 @@ document.addEventListener('DOMContentLoaded', () => {
   cartClose.onclick = cartOverlay.onclick = () => cartPanel.classList.remove('active');
   checkoutBtn.onclick = () => { alert('Спасибо за заказ! Мы свяжемся с вами.'); cart.length = 0; renderCart(); cartPanel.classList.remove('active'); };
 
-  // 🖱️ Плавный скролл
+  // ✈️ Анимация самолётика (ЗАМЕДЛЕНА)
+  function launchPlane(btn) {
+    const plane = document.createElement('div');
+    plane.className = 'flying-plane';
+    plane.innerHTML = '✈️';
+    
+    const btnRect = btn.getBoundingClientRect();
+    const cartRect = cartBtn.getBoundingClientRect();    
+    const item = btn.closest('.menu-item');
+    plane.style.color = item.dataset.color || '#d4a373';
+
+    plane.style.left = `${btnRect.left + btnRect.width / 2}px`;
+    plane.style.top = `${btnRect.top + btnRect.height / 2}px`;
+    document.body.appendChild(plane);
+
+    const tx = cartRect.left + cartRect.width / 2 - (btnRect.left + btnRect.width / 2);
+    const ty = cartRect.top + cartRect.height / 2 - (btnRect.top + btnRect.height / 2);
+    plane.style.setProperty('--tx', `${tx}px`);
+    plane.style.setProperty('--ty', `${ty}px`);
+
+    requestAnimationFrame(() => plane.classList.add('fly'));
+    // Увеличил таймаут под новую длительность анимации
+    setTimeout(() => plane.remove(), 1500);
+  }
+
+  // Плавный скролл & Анимации появления
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
       const t = document.querySelector(a.getAttribute('href'));
-      if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });    });
+      if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+    });
   });
 
-  // ✨ Анимация появления секций + каскад для меню
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting) {
