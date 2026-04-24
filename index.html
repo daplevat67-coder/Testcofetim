@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Фотограф | Портфолио</title>
+  <title>Зерно | Кофейня</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <div class="logo">Фотограф</div>
+      <div class="logo">Зерно</div>
       <nav class="nav">
-        <a href="#portfolio">Работы</a>
+        <a href="#about">Атмосфера</a>
+        <a href="#menu">Меню</a>
         <a href="#contact">Контакты</a>
       </nav>
     </div>
@@ -20,47 +21,54 @@
   <main>
     <section class="section hero">
       <div class="container">
-        <h1 class="hero-title">Ловлю моменты, создаю истории</h1>
-        <p class="hero-sub">Профессиональная съёмка свадеб, портретов и природы.</p>
-        <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
+        <h1 class="hero-title">Кофе, который будит смыслы</h1>
+        <p class="hero-sub">Свежая обжарка, точная экстракция и атмосфера, где хочется остаться.</p>
+        <a href="#contact" class="btn btn-primary">Забронировать столик</a>
       </div>
     </section>
 
-    <section id="portfolio" class="section portfolio">
+    <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title">Портфолио</h2>
-        <div class="filters">
-          <button class="filter-btn active" data-filter="all">Все</button>
-          <button class="filter-btn" data-filter="wedding">Свадьбы</button>
-          <button class="filter-btn" data-filter="portrait">Портреты</button>
-          <button class="filter-btn" data-filter="nature">Природа</button>
-        </div>
-        <div class="portfolio-grid">
-          <div class="portfolio-item" data-category="wedding"><div class="img-placeholder">Свадьба 1</div></div>
-          <div class="portfolio-item" data-category="portrait"><div class="img-placeholder">Портрет 1</div></div>
-          <div class="portfolio-item" data-category="nature"><div class="img-placeholder">Природа 1</div></div>
-          <div class="portfolio-item" data-category="wedding"><div class="img-placeholder">Свадьба 2</div></div>
-          <div class="portfolio-item" data-category="portrait"><div class="img-placeholder">Портрет 2</div></div>
-          <div class="portfolio-item" data-category="nature"><div class="img-placeholder">Природа 2</div></div>
+        <h2 class="section-title">Атмосфера</h2>
+        <p class="section-text">Мы создаём пространство для ваших идей, встреч и тишины. Натуральные материалы, мягкий свет и зерно от лучших фермеров.</p>
+        <div class="img-grid">
+          <div class="img-placeholder">Интерьер 1</div>
+          <div class="img-placeholder">Интерьер 2</div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
+    <section id="menu" class="section">
+      <div class="container">
+        <h2 class="section-title">Меню</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="menu-name">Эспрессо</span><span class="menu-price">180 ₽</span></div>
+          <div class="menu-item"><span class="menu-name">Капучино</span><span class="menu-price">250 ₽</span></div>
+          <div class="menu-item"><span class="menu-name">Латте</span><span class="menu-price">270 ₽</span></div>
+          <div class="menu-item"><span class="menu-name">Флэт Уайт</span><span class="menu-price">290 ₽</span></div>
+          <div class="menu-item"><span class="menu-name">Круассан</span><span class="menu-price">190 ₽</span></div>
+          <div class="menu-item"><span class="menu-name">Чизкейк</span><span class="menu-price">320 ₽</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Связаться</h2>
-        <p class="contact-text">Готов обсудить вашу съёмку.</p>
+        <p class="section-text">Открыты ежедневно 8:00–22:00. Бронируйте столик или заказывайте с собой.</p>
         <div class="contact-buttons">
-          <a href="https://t.me/photographer" class="btn btn-outline" target="_blank">Telegram</a>
           <a href="https://wa.me/79001234567" class="btn btn-outline" target="_blank">WhatsApp</a>
-          <a href="mailto:photo@example.com" class="btn btn-outline">Email</a>
+          <a href="tel:+79001234567" class="btn btn-outline">Позвонить</a>
+          <a href="https://t.me/coffee_zerno" class="btn btn-outline" target="_blank">Telegram</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="container">© 2025 Фотограф.</div></footer>
-  <div class="demo-overlay"></div>
+  <footer class="footer">
+    <div class="container">© 2025 Кофейня «Зерно».</div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
