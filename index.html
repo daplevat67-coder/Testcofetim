@@ -1,77 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Кофейня Зерно — specialty coffee, уютная атмосфера">
-  <title>Зерно | Кофейня</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фотограф | Портфолио</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <div class="logo">☕ Зерно</div>
+      <div class="logo">Фотограф</div>
       <nav class="nav">
-        <a href="#about">Атмосфера</a>
-        <a href="#menu">Меню</a>
+        <a href="#portfolio">Работы</a>
         <a href="#contact">Контакты</a>
       </nav>
-      <button class="cart-btn" aria-label="Открыть корзину">
-        <span class="cart-icon">🛒</span>
-        <span class="cart-count">0</span>
-      </button>
     </div>
   </header>
 
   <main>
     <section class="section hero">
       <div class="container">
-        <span class="badge">Свежая обжарка каждый день</span>
-        <h1 class="hero-title">Кофе, который будит смыслы</h1>
-        <p class="hero-sub">Точная экстракция, натуральные ингредиенты и атмосфера, где хочется остаться.</p>
-        <a href="#menu" class="btn btn-primary">Открыть меню</a>
+        <h1 class="hero-title">Ловлю моменты, создаю истории</h1>
+        <p class="hero-sub">Профессиональная съёмка свадеб, портретов и природы.</p>
+        <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
       </div>
     </section>
 
-    <section id="about" class="section about">
+    <section id="portfolio" class="section portfolio">
       <div class="container">
-        <h2 class="section-title">Атмосфера</h2>
-        <p class="about-text">Мы создаём пространство для ваших идей, встреч и тишины. Натуральные материалы, мягкий свет и зерно от лучших фермеров.</p>
-        <div class="img-grid">
-          <div class="img-placeholder">Интерьер 1</div>
-          <div class="img-placeholder">Интерьер 2</div>
+        <h2 class="section-title">Портфолио</h2>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="wedding">Свадьбы</button>
+          <button class="filter-btn" data-filter="portrait">Портреты</button>
+          <button class="filter-btn" data-filter="nature">Природа</button>
         </div>
-      </div>
-    </section>
-
-    <section id="menu" class="section menu">
-      <div class="container">
-        <h2 class="section-title">Меню</h2>
-        <p class="menu-sub">Нажмите на напиток, чтобы узнать состав и добавить в корзину</p>        <div class="menu-grid" id="menu-grid">
-          <article class="menu-item" data-id="1" data-name="Эспрессо" data-price="180" data-composition="Арабика 100%, обжарка средняя, объём 30 мл">
-            <div class="item-info"><h3>Эспрессо</h3><p>Классический крепкий кофе</p></div>
-            <span class="item-price">180 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="2" data-name="Капучино" data-price="250" data-composition="Эспрессо, вспененное молоко, объём 250 мл">
-            <div class="item-info"><h3>Капучино</h3><p>Мягкий и воздушный</p></div>
-            <span class="item-price">250 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="3" data-name="Латте" data-price="270" data-composition="Эспрессо, много молока, лёгкая пенка, объём 350 мл">
-            <div class="item-info"><h3>Латте</h3><p>Нежный молочный напиток</p></div>
-            <span class="item-price">270 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="4" data-name="Флэт Уайт" data-price="290" data-composition="Двойной эспрессо, бархатистое молоко, объём 200 мл">
-            <div class="item-info"><h3>Флэт Уайт</h3><p>Насыщенный и яркий</p></div>
-            <span class="item-price">290 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="5" data-name="Круассан" data-price="190" data-composition="Сливочное тесто, бездрожжевое, свежая выпечка">
-            <div class="item-info"><h3>Круассан</h3><p>Хрустящий и ароматный</p></div>
-            <span class="item-price">190 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="6" data-name="Чизкейк" data-price="320" data-composition="Сливочный сыр, печенье, ягодный топпинг">
-            <div class="item-info"><h3>Чизкейк</h3><p>Нежный десерт к кофе</p></div>
-            <span class="item-price">320 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-category="wedding"><div class="img-placeholder">Свадьба 1</div></div>
+          <div class="portfolio-item" data-category="portrait"><div class="img-placeholder">Портрет 1</div></div>
+          <div class="portfolio-item" data-category="nature"><div class="img-placeholder">Природа 1</div></div>
+          <div class="portfolio-item" data-category="wedding"><div class="img-placeholder">Свадьба 2</div></div>
+          <div class="portfolio-item" data-category="portrait"><div class="img-placeholder">Портрет 2</div></div>
+          <div class="portfolio-item" data-category="nature"><div class="img-placeholder">Природа 2</div></div>
         </div>
       </div>
     </section>
@@ -79,48 +49,18 @@
     <section id="contact" class="section contact">
       <div class="container">
         <h2 class="section-title">Связаться</h2>
-        <p class="contact-text">xxxxx</p>
+        <p class="contact-text">Готов обсудить вашу съёмку.</p>
         <div class="contact-buttons">
-          <a href="#" class="btn btn-outline">xxxxx</a>
-          <a href="#" class="btn btn-outline">xxxxx</a>
-          <a href="#" class="btn btn-outline">xxxxx</a>
+          <a href="https://t.me/photographer" class="btn btn-outline" target="_blank">Telegram</a>
+          <a href="https://wa.me/79001234567" class="btn btn-outline" target="_blank">WhatsApp</a>
+          <a href="mailto:photo@example.com" class="btn btn-outline">Email</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">© 2025 Кофейня «Зерно». Все права защищены.</div>
-  </footer>
-
-  <!-- Модальное окно состава -->
-  <div class="overlay" id="item-modal">
-    <div class="modal">
-      <button class="modal-close" aria-label="Закрыть">✕</button>      <h2 id="modal-title"></h2>
-      <p id="modal-composition"></p>
-      <div class="modal-actions">
-        <span id="modal-price"></span>
-        <button class="btn btn-primary" id="modal-add-btn">В корзину</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Панель корзины -->
-  <div class="overlay" id="cart-overlay"></div>
-  <div class="cart-panel" id="cart-panel">
-    <div class="cart-header">
-      <h3>🛒 Корзина</h3>
-      <button class="cart-close" aria-label="Закрыть">✕</button>
-    </div>
-    <div class="cart-items" id="cart-items">
-      <p class="cart-empty">Корзина пуста</p>
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total">Итого: <span id="cart-total">0 ₽</span></div>
-      <button class="btn btn-primary" id="checkout-btn">Оформить заказ</button>
-    </div>
-  </div>
-
+  <footer class="footer"><div class="container">© 2025 Фотограф.</div></footer>
+  <div class="demo-overlay"></div>
   <script src="script.js"></script>
 </body>
 </html>
