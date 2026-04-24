@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartCountEl = document.querySelector('.cart-count');
   const checkoutBtn = document.getElementById('checkout-btn');
 
-  // 📦 МОДАЛЬНОЕ ОКНО НАПИТКА
+  // 📦 МОДАЛЬНОЕ ОКНО
   const itemModal = document.getElementById('item-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalComp = document.getElementById('modal-composition');
@@ -19,15 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalClose = document.querySelector('.modal-close');
   let currentItem = null;
 
-  // Открытие карточки
+  // Привязка событий к меню
   document.getElementById('menu-grid').addEventListener('click', e => {
-    const item = e.target.closest('.menu-item');
-    if (!item) return;
+    // Клик по кнопке "+"
     if (e.target.classList.contains('add-btn')) {
-      addToCart(item.dataset.id);
+      const itemEl = e.target.closest('.menu-item');
+      if (itemEl) {
+        e.target.classList.add('added');
+        setTimeout(() => e.target.classList.remove('added'), 300);
+        addToCart(itemEl.dataset.id);
+      }
       return;
     }
-    openItemModal(item);
+    // Клик по карточке → открыть модалку
+    const itemEl = e.target.closest('.menu-item');
+    if (itemEl) openItemModal(itemEl);
   });
 
   function openItemModal(el) {
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       composition: el.dataset.composition
     };
     modalTitle.textContent = currentItem.name;
-    modalComp.textContent = `Состав: ${currentItem.composition}`;
+    modalComp.textContent = currentItem.composition;
     modalPrice.textContent = `${currentItem.price} ₽`;
     itemModal.classList.add('active');
   }
@@ -46,7 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeItemModal() { itemModal.classList.remove('active'); currentItem = null; }
   modalClose.onclick = closeItemModal;
   itemModal.onclick = e => { if(e.target === itemModal) closeItemModal(); };
-  modalAddBtn.onclick = () => { addToCart(currentItem.id); closeItemModal(); };
+  modalAddBtn.onclick = () => { 
+    if(currentItem) addToCart(currentItem.id);
+    closeItemModal(); 
+  };
 
   // Логика корзины
   function addToCart(id) {
@@ -54,14 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (existing) existing.qty++;
     else cart.push({ ...getMenuData(id), qty: 1 });
     renderCart();
+    pulseCartCount();
   }
 
   function getMenuData(id) {
     const el = document.querySelector(`.menu-item[data-id="${id}"]`);
-    return {
-      id: el.dataset.id, name: el.dataset.name,
-      price: Number(el.dataset.price), composition: el.dataset.composition
-    };
+    return { id: el.dataset.id, name: el.dataset.name, price: Number(el.dataset.price), composition: el.dataset.composition };
+  }
+
+  function pulseCartCount() {
+    cartCountEl.classList.add('pulse');
+    setTimeout(() => cartCountEl.classList.remove('pulse'), 400);
   }
 
   function renderCart() {
@@ -96,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = btn.dataset.id;
     const item = cart.find(i => i.id === id);
     if (btn.classList.contains('plus')) item.qty++;
-    else if (btn.classList.contains('minus')) item.qty > 1 ? item.qty-- : (cart.splice(cart.indexOf(item), 1));
+    else if (btn.classList.contains('minus')) item.qty > 1 ? item.qty-- : cart.splice(cart.indexOf(item), 1);
     else if (btn.classList.contains('remove-btn')) cart.splice(cart.indexOf(item), 1);
     renderCart();
   });
