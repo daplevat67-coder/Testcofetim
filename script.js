@@ -1,11 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 🛒 КОРЗИНА (загрузка из localStorage при старте)
   let cart = [];
-  const savedCart = localStorage.getItem('coffeeCart');
-  if (savedCart) {
-    try { cart = JSON.parse(savedCart); } 
-    catch (e) { cart = []; localStorage.removeItem('coffeeCart'); }
-  }
+  const saved = localStorage.getItem('coffeeCart');
+  if (saved) { try { cart = JSON.parse(saved); } catch(e) { cart = []; } }
 
   const cartPanel = document.getElementById('cart-panel');
   const cartOverlay = document.getElementById('cart-overlay');
@@ -24,12 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalClose = document.querySelector('.modal-close');
   let currentItem = null;
 
-  // 💾 Функция сохранения корзины
-  function saveCart() {
-    localStorage.setItem('coffeeCart', JSON.stringify(cart));
-  }
+  function saveCart() { localStorage.setItem('coffeeCart', JSON.stringify(cart)); }
 
-  // Клики по меню
   document.getElementById('menu-grid').addEventListener('click', e => {
     const item = e.target.closest('.menu-item');
     if (!item) return;
@@ -47,18 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
     modalComp.textContent = `Состав: ${currentItem.composition}`;
     modalPrice.textContent = `${currentItem.price} ₽`;
     itemModal.classList.add('active');
-  }  function closeItemModal() { itemModal.classList.remove('active'); currentItem = null; }
+  }
+  function closeItemModal() { itemModal.classList.remove('active'); currentItem = null; }
   modalClose.onclick = closeItemModal;
   itemModal.onclick = e => { if(e.target === itemModal) closeItemModal(); };
   modalAddBtn.onclick = () => { addToCart(currentItem.id); closeItemModal(); };
 
-  // Добавление в корзину
   function addToCart(id) {
     const existing = cart.find(i => i.id === id);
-    if (existing) existing.qty++;
-    else cart.push({ id, name: getMenuData(id).name, price: getMenuData(id).price, qty: 1 });
-    renderCart();
-    saveCart(); // Сохраняем сразу
+    if (existing) existing.qty++;    else cart.push({ id, name: getMenuData(id).name, price: getMenuData(id).price, qty: 1 });
+    renderCart(); saveCart();
     cartBtn.classList.add('pulse');
     setTimeout(() => cartBtn.classList.remove('pulse'), 400);
   }
@@ -68,18 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return { id: el.dataset.id, name: el.dataset.name, price: Number(el.dataset.price) };
   }
 
-  // Отрисовка корзины
   function renderCart() {
     cartItemsEl.innerHTML = '';
     if (cart.length === 0) { 
       cartItemsEl.innerHTML = '<p class="cart-empty">Корзина пуста</p>'; 
-      cartTotalEl.textContent = '0 ₽'; 
-      cartCountEl.textContent = '0'; 
-      return; 
+      cartTotalEl.textContent = '0 ₽'; cartCountEl.textContent = '0'; return; 
     }
     cart.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'cart-item';
+      const div = document.createElement('div'); div.className = 'cart-item';
       div.innerHTML = `<div class="cart-item-info"><span class="cart-item-name">${item.name}</span><span class="cart-item-price">${item.price} ₽ × ${item.qty}</span></div>
         <div class="cart-item-controls"><button class="qty-btn minus" data-id="${item.id}">−</button><button class="qty-btn plus" data-id="${item.id}">+</button><button class="remove-btn" data-id="${item.id}">✕</button></div>`;
       cartItemsEl.appendChild(div);
@@ -89,44 +75,29 @@ document.addEventListener('DOMContentLoaded', () => {
     cartCountEl.textContent = cart.reduce((sum, i) => sum + i.qty, 0);
   }
 
-  // Изменение количества / удаление
   cartItemsEl.addEventListener('click', e => {
     const btn = e.target.closest('.qty-btn, .remove-btn');
     if (!btn) return;
     const id = btn.dataset.id;
     const item = cart.find(i => i.id === id);
     if (btn.classList.contains('plus')) item.qty++;
-    else if (btn.classList.contains('minus')) item.qty > 1 ? item.qty-- : cart.splice(cart.indexOf(item), 1);    else if (btn.classList.contains('remove-btn')) cart.splice(cart.indexOf(item), 1);
-    renderCart();
-    saveCart(); // Сохраняем сразу
+    else if (btn.classList.contains('minus')) item.qty > 1 ? item.qty-- : cart.splice(cart.indexOf(item), 1);
+    else if (btn.classList.contains('remove-btn')) cart.splice(cart.indexOf(item), 1);
+    renderCart(); saveCart();
   });
 
-  // Открытие/закрытие панели
   cartBtn.onclick = () => cartPanel.classList.add('active');
   cartClose.onclick = cartOverlay.onclick = () => cartPanel.classList.remove('active');
-
-  // Оформление заказа (очистка корзины)
-  checkoutBtn.onclick = () => {
-    alert('Спасибо за заказ! Мы свяжемся с вами.');
-    cart = [];
-    renderCart();
-    saveCart(); // Сохраняем пустую корзину
-    cartPanel.classList.remove('active');
-  };
-
-  // Инициализация интерфейса при загрузке
+  checkoutBtn.onclick = () => { alert('Спасибо за заказ!'); cart = []; renderCart(); saveCart(); cartPanel.classList.remove('active'); };
   renderCart();
 
-  // Плавный скролл
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
       const t = document.querySelector(a.getAttribute('href'));
       if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-    });
-  });
+    });  });
 
-  // Анимация появления секций
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting) {

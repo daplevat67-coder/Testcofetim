@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Кофейня Зерно — specialty coffee">
   <title>Зерно | Кофейня</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,10 +15,6 @@
         <a href="#menu">Меню</a>
         <a href="#contact">Контакты</a>
       </nav>
-      <button class="cart-btn" aria-label="Корзина">
-        <svg class="cart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-count">0</span>
-      </button>
     </div>
   </header>
 
@@ -47,28 +42,28 @@
     <section id="menu" class="section menu">
       <div class="container">
         <h2 class="section-title">Меню</h2>
-        <p class="menu-sub">Нажмите на карточку для состава. «+» — сразу в корзину.</p>        <div class="menu-grid" id="menu-grid">
-          <article class="menu-item" data-id="1" data-name="Эспрессо" data-price="180" data-composition="Арабика 100%, обжарка средняя, 30 мл" data-color="#3e2723">
+        <p class="menu-sub">Нажмите на карточку для состава. «+» — сразу в корзину.</p>
+        <div class="menu-grid" id="menu-grid">
+          <article class="menu-item" data-id="1" data-name="Эспрессо" data-price="180" data-composition="Арабика 100%, обжарка средняя, 30 мл">
             <div class="item-info"><h3>Эспрессо</h3><p>Классический крепкий кофе</p></div>
             <span class="item-price">180 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
-          </article>
-          <article class="menu-item" data-id="2" data-name="Капучино" data-price="250" data-composition="Эспрессо, вспененное молоко, 250 мл" data-color="#d4a373">
+          </article>          <article class="menu-item" data-id="2" data-name="Капучино" data-price="250" data-composition="Эспрессо, вспененное молоко, 250 мл">
             <div class="item-info"><h3>Капучино</h3><p>Мягкий и воздушный</p></div>
             <span class="item-price">250 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
           </article>
-          <article class="menu-item" data-id="3" data-name="Латте" data-price="270" data-composition="Эспрессо, много молока, лёгкая пенка, 350 мл" data-color="#f5f0eb">
+          <article class="menu-item" data-id="3" data-name="Латте" data-price="270" data-composition="Эспрессо, много молока, лёгкая пенка, 350 мл">
             <div class="item-info"><h3>Латте</h3><p>Нежный молочный напиток</p></div>
             <span class="item-price">270 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
           </article>
-          <article class="menu-item" data-id="4" data-name="Флэт Уайт" data-price="290" data-composition="Двойной эспрессо, бархатистое молоко, 200 мл" data-color="#8b5a2b">
+          <article class="menu-item" data-id="4" data-name="Флэт Уайт" data-price="290" data-composition="Двойной эспрессо, бархатистое молоко, 200 мл">
             <div class="item-info"><h3>Флэт Уайт</h3><p>Насыщенный и яркий</p></div>
             <span class="item-price">290 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
           </article>
-          <article class="menu-item" data-id="5" data-name="Круассан" data-price="190" data-composition="Сливочное тесто, бездрожжевое, свежая выпечка" data-color="#e6c280">
+          <article class="menu-item" data-id="5" data-name="Круассан" data-price="190" data-composition="Сливочное тесто, бездрожжевое, свежая выпечка">
             <div class="item-info"><h3>Круассан</h3><p>Хрустящий и ароматный</p></div>
             <span class="item-price">190 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
           </article>
-          <article class="menu-item" data-id="6" data-name="Чизкейк" data-price="320" data-composition="Сливочный сыр, печенье, ягодный топпинг" data-color="#f08080">
+          <article class="menu-item" data-id="6" data-name="Чизкейк" data-price="320" data-composition="Сливочный сыр, печенье, ягодный топпинг">
             <div class="item-info"><h3>Чизкейк</h3><p>Нежный десерт к кофе</p></div>
             <span class="item-price">320 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
           </article>
@@ -96,12 +91,12 @@
   <!-- Модальное окно состава -->
   <div class="overlay" id="item-modal">
     <div class="modal">
-      <button class="modal-close" aria-label="Закрыть">✕</button>      <h2 id="modal-title"></h2>
+      <button class="modal-close" aria-label="Закрыть">✕</button>
+      <h2 id="modal-title"></h2>
       <p id="modal-composition"></p>
       <div class="modal-actions">
         <span id="modal-price"></span>
-        <button class="btn btn-primary" id="modal-add-btn">В корзину</button>
-      </div>
+        <button class="btn btn-primary" id="modal-add-btn">В корзину</button>      </div>
     </div>
   </div>
 
@@ -115,6 +110,12 @@
       <button class="btn btn-primary" id="checkout-btn">Оформить заказ</button>
     </div>
   </aside>
+
+  <!-- 🛒 Плавающая кнопка корзины -->
+  <button class="floating-cart-btn" aria-label="Открыть корзину">
+    <svg class="cart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="cart-count">0</span>
+  </button>
 
   <script src="script.js"></script>
 </body>
