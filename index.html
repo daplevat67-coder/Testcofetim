@@ -46,26 +46,26 @@
         <div class="menu-grid" id="menu-grid">
           <article class="menu-item" data-id="1" data-name="Эспрессо" data-price="180" data-composition="Арабика 100%, обжарка средняя, 30 мл">
             <div class="item-info"><h3>Эспрессо</h3><p>Классический крепкий кофе</p></div>
-            <span class="item-price">180 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">180 ₽</span><button class="add-btn">+</button>
           </article>          <article class="menu-item" data-id="2" data-name="Капучино" data-price="250" data-composition="Эспрессо, вспененное молоко, 250 мл">
             <div class="item-info"><h3>Капучино</h3><p>Мягкий и воздушный</p></div>
-            <span class="item-price">250 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">250 ₽</span><button class="add-btn">+</button>
           </article>
           <article class="menu-item" data-id="3" data-name="Латте" data-price="270" data-composition="Эспрессо, много молока, лёгкая пенка, 350 мл">
             <div class="item-info"><h3>Латте</h3><p>Нежный молочный напиток</p></div>
-            <span class="item-price">270 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">270 ₽</span><button class="add-btn">+</button>
           </article>
           <article class="menu-item" data-id="4" data-name="Флэт Уайт" data-price="290" data-composition="Двойной эспрессо, бархатистое молоко, 200 мл">
             <div class="item-info"><h3>Флэт Уайт</h3><p>Насыщенный и яркий</p></div>
-            <span class="item-price">290 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">290 ₽</span><button class="add-btn">+</button>
           </article>
           <article class="menu-item" data-id="5" data-name="Круассан" data-price="190" data-composition="Сливочное тесто, бездрожжевое, свежая выпечка">
             <div class="item-info"><h3>Круассан</h3><p>Хрустящий и ароматный</p></div>
-            <span class="item-price">190 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">190 ₽</span><button class="add-btn">+</button>
           </article>
           <article class="menu-item" data-id="6" data-name="Чизкейк" data-price="320" data-composition="Сливочный сыр, печенье, ягодный топпинг">
             <div class="item-info"><h3>Чизкейк</h3><p>Нежный десерт к кофе</p></div>
-            <span class="item-price">320 ₽</span><button class="add-btn" aria-label="Добавить">+</button>
+            <span class="item-price">320 ₽</span><button class="add-btn">+</button>
           </article>
         </div>
       </div>
@@ -91,7 +91,7 @@
   <!-- Модальное окно состава -->
   <div class="overlay" id="item-modal">
     <div class="modal">
-      <button class="modal-close" aria-label="Закрыть">✕</button>
+      <button class="modal-close">✕</button>
       <h2 id="modal-title"></h2>
       <p id="modal-composition"></p>
       <div class="modal-actions">
@@ -103,7 +103,7 @@
   <!-- Панель корзины -->
   <div class="overlay" id="cart-overlay"></div>
   <aside class="cart-panel" id="cart-panel">
-    <div class="cart-header"><h3>🛒 Корзина</h3><button class="cart-close" aria-label="Закрыть">✕</button></div>
+    <div class="cart-header"><h3>🛒 Корзина</h3><button class="cart-close">✕</button></div>
     <div class="cart-items" id="cart-items"><p class="cart-empty">Корзина пуста</p></div>
     <div class="cart-footer">
       <div class="cart-total">Итого: <span id="cart-total">0 ₽</span></div>
@@ -113,7 +113,7 @@
 
   <!-- 🛒 Плавающая кнопка корзины -->
   <button class="floating-cart-btn" aria-label="Открыть корзину">
-    <svg class="cart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
     <span class="cart-count">0</span>
   </button>
 

@@ -25,11 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('menu-grid').addEventListener('click', e => {
     const item = e.target.closest('.menu-item');
     if (!item) return;
-    if (e.target.classList.contains('add-btn')) {
-      e.stopPropagation();
-      addToCart(item.dataset.id);
-      return;
-    }
+    if (e.target.classList.contains('add-btn')) { e.stopPropagation(); addToCart(item.dataset.id); return; }
     openItemModal(item);
   });
 
@@ -47,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function addToCart(id) {
     const existing = cart.find(i => i.id === id);
-    if (existing) existing.qty++;    else cart.push({ id, name: getMenuData(id).name, price: getMenuData(id).price, qty: 1 });
+    if (existing) existing.qty++;
+    else cart.push({ id, name: getMenuData(id).name, price: getMenuData(id).price, qty: 1 });
     renderCart(); saveCart();
     cartBtn.classList.add('pulse');
-    setTimeout(() => cartBtn.classList.remove('pulse'), 400);
-  }
+    setTimeout(() => cartBtn.classList.remove('pulse'), 400);  }
 
   function getMenuData(id) {
     const el = document.querySelector(`.menu-item[data-id="${id}"]`);
@@ -60,10 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderCart() {
     cartItemsEl.innerHTML = '';
-    if (cart.length === 0) { 
-      cartItemsEl.innerHTML = '<p class="cart-empty">Корзина пуста</p>'; 
-      cartTotalEl.textContent = '0 ₽'; cartCountEl.textContent = '0'; return; 
-    }
+    if (cart.length === 0) { cartItemsEl.innerHTML = '<p class="cart-empty">Корзина пуста</p>'; cartTotalEl.textContent = '0 ₽'; cartCountEl.textContent = '0'; return; }
     cart.forEach(item => {
       const div = document.createElement('div'); div.className = 'cart-item';
       div.innerHTML = `<div class="cart-item-info"><span class="cart-item-name">${item.name}</span><span class="cart-item-price">${item.price} ₽ × ${item.qty}</span></div>
@@ -96,14 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const t = document.querySelector(a.getAttribute('href'));
       if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-    });  });
+    });
+  });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting) {
         e.target.classList.add('visible');
-        if(e.target.id === 'menu') {
-          document.querySelectorAll('.menu-item').forEach((item, i) => {
+        if(e.target.id === 'menu') {          document.querySelectorAll('.menu-item').forEach((item, i) => {
             item.style.opacity = '0'; item.style.transform = 'translateY(15px)';
             setTimeout(() => { item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, i * 80);
           });
