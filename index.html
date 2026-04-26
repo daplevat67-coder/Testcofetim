@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#d4a373" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d4a373">
   <title>Зерно | Кофейня</title>
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="apple-touch-icon" href="./icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
-    <div class="container header-inner">
+    <div class="container">
       <div class="logo">☕ Зерно</div>
       <nav class="nav">
         <a href="#about">Атмосфера</a>
@@ -24,109 +21,57 @@
   </header>
 
   <main>
-    <section class="section hero">
+    <section class="hero">
       <div class="container">
-        <span class="badge">Свежая обжарка каждый день</span>
         <h1 class="hero-title">Кофе, который будит смыслы</h1>
-        <p class="hero-sub">Точная экстракция, натуральные ингредиенты и атмосфера, где хочется остаться.</p>
+        <p class="hero-sub">Свежая обжарка, точная экстракция и атмосфера, где хочется остаться.</p>
         <a href="#menu" class="btn btn-primary">Открыть меню</a>
       </div>
     </section>
 
-    <section id="about" class="section about">
+    <section id="about" class="section">
       <div class="container">
         <h2 class="section-title">Атмосфера</h2>
-        <p class="about-text">Мы создаём пространство для ваших идей, встреч и тишины. Натуральные материалы, мягкий свет и зерно от лучших фермеров.</p>
-        <div class="img-grid">
-          <div class="img-placeholder">Интерьер 1</div>
-          <div class="img-placeholder">Интерьер 2</div>
-        </div>
+        <p>Мы создаём пространство для ваших идей, встреч и тишины.</p>
       </div>
     </section>
 
-    <section id="menu" class="section menu">
+    <section id="menu" class="section">
       <div class="container">
         <h2 class="section-title">Меню</h2>
-        <p class="menu-sub">Нажмите на карточку для состава. «+» — сразу в корзину.</p>        <div class="menu-grid" id="menu-grid">
-          <article class="menu-item" data-id="1" data-name="Эспрессо" data-price="180" data-composition="Арабика 100%, обжарка средняя, 30 мл">
-            <div class="item-info"><h3>Эспрессо</h3><p>Классический крепкий кофе</p></div>
-            <span class="item-price">180 ₽</span><button class="add-btn">+</button>
-          </article>
-          <article class="menu-item" data-id="2" data-name="Капучино" data-price="250" data-composition="Эспрессо, вспененное молоко, 250 мл">
-            <div class="item-info"><h3>Капучино</h3><p>Мягкий и воздушный</p></div>
-            <span class="item-price">250 ₽</span><button class="add-btn">+</button>
-          </article>
-          <article class="menu-item" data-id="3" data-name="Латте" data-price="270" data-composition="Эспрессо, много молока, лёгкая пенка, 350 мл">
-            <div class="item-info"><h3>Латте</h3><p>Нежный молочный напиток</p></div>
-            <span class="item-price">270 ₽</span><button class="add-btn">+</button>
-          </article>
-          <article class="menu-item" data-id="4" data-name="Флэт Уайт" data-price="290" data-composition="Двойной эспрессо, бархатистое молоко, 200 мл">
-            <div class="item-info"><h3>Флэт Уайт</h3><p>Насыщенный и яркий</p></div>
-            <span class="item-price">290 ₽</span><button class="add-btn">+</button>
-          </article>
-          <article class="menu-item" data-id="5" data-name="Круассан" data-price="190" data-composition="Сливочное тесто, бездрожжевое, свежая выпечка">
-            <div class="item-info"><h3>Круассан</h3><p>Хрустящий и ароматный</p></div>
-            <span class="item-price">190 ₽</span><button class="add-btn">+</button>
-          </article>
-          <article class="menu-item" data-id="6" data-name="Чизкейк" data-price="320" data-composition="Сливочный сыр, печенье, ягодный топпинг">
-            <div class="item-info"><h3>Чизкейк</h3><p>Нежный десерт к кофе</p></div>
-            <span class="item-price">320 ₽</span><button class="add-btn">+</button>
-          </article>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <span class="menu-name">Эспрессо</span>
+            <span class="menu-price">180 ₽</span>
+          </div>
+          <div class="menu-item">
+            <span class="menu-name">Капучино</span>
+            <span class="menu-price">250 ₽</span>
+          </div>
+          <div class="menu-item">
+            <span class="menu-name">Латте</span>
+            <span class="menu-price">270 ₽</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
+    <section id="contact" class="section">
       <div class="container">
-        <h2 class="section-title">Связаться</h2>
-        <p class="contact-text">xxxxx</p>
-        <div class="contact-buttons">
-          <a href="#" class="btn btn-outline">xxxxx</a>
-          <a href="#" class="btn btn-outline">xxxxx</a>
-          <a href="#" class="btn btn-outline">xxxxx</a>
-        </div>
+        <h2 class="section-title">Контакты</h2>
+        <p>xxxxx</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">© 2025 Кофейня «Зерно». Все права защищены.</div>
+    <div class="container">© 2025 Кофейня «Зерно»</div>
   </footer>
-
-  <div class="overlay" id="item-modal">
-    <div class="modal">
-      <button class="modal-close">✕</button>
-      <h2 id="modal-title"></h2>      <p id="modal-composition"></p>
-      <div class="modal-actions">
-        <span id="modal-price"></span>
-        <button class="btn btn-primary" id="modal-add-btn">В корзину</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="overlay" id="cart-overlay"></div>
-  <aside class="cart-panel" id="cart-panel">
-    <div class="cart-header"><h3>🛒 Корзина</h3><button class="cart-close">✕</button></div>
-    <div class="cart-items" id="cart-items"><p class="cart-empty">Корзина пуста</p></div>
-    <div class="cart-footer">
-      <div class="cart-total">Итого: <span id="cart-total">0 ₽</span></div>
-      <button class="btn btn-primary" id="checkout-btn">Оформить заказ</button>
-    </div>
-  </aside>
-
-  <button class="floating-cart-btn" aria-label="Открыть корзину">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    <span class="cart-count">0</span>
-  </button>
 
   <script src="script.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
-          .then(() => console.log('✅ PWA активен'))
-          .catch(err => console.log('❌ Ошибка SW:', err));
-      });
+      navigator.serviceWorker.register('service-worker.js');
     }
   </script>
 </body>
