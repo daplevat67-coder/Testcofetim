@@ -17,25 +17,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s var(--ease); }
 .nav a:hover { color: var(--text); } .nav a:hover::after { width: 100%; }
 
-/* 🛒 Компактная плавающая корзина */
-.floating-cart-btn { 
-  position: fixed; bottom: 20px; right: 20px; z-index: 1000; 
-  width: 48px; height: 48px; border-radius: 50%; 
-  background: var(--accent); color: #1a1512; border: none; 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35); 
-  display: flex; align-items: center; justify-content: center; 
-  cursor: pointer; transition: all 0.3s var(--ease); 
-}
-.floating-cart-btn:hover { transform: scale(1.05); } 
-.floating-cart-btn.pulse { animation: cartPulse 0.4s var(--ease); }
-.cart-svg { width: 20px; height: 20px; }
-.cart-count { 
-  position: absolute; top: -3px; right: -3px; 
-  background: #fff; color: var(--accent); font-size: 0.65rem; font-weight: 800; 
-  width: 16px; height: 16px; border-radius: 50%; 
-  display: flex; align-items: center; justify-content: center; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3); 
-}
+.floating-cart-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #1a1512; border: none; box-shadow: 0 6px 18px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s var(--ease); }
+.floating-cart-btn:hover { transform: scale(1.05); } .floating-cart-btn.pulse { animation: cartPulse 0.4s var(--ease); }
+.cart-count { position: absolute; top: -3px; right: -3px; background: #fff; color: var(--accent); font-size: 0.65rem; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 @keyframes cartPulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
 .section { padding: clamp(4rem, 8vw, 6rem) 0; opacity: 0; transform: translateY(24px); transition: all 0.7s var(--ease); } .section.visible { opacity: 1; transform: translateY(0); }
@@ -82,6 +66,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 @media (max-width: 768px) {
   .header-inner { flex-direction: column; gap: 0.8rem; } .nav { gap: 1rem; font-size: 0.9rem; justify-content: center; }
   .hero { padding-top: 8rem; } .menu-grid { grid-template-columns: 1fr; } .btn { width: 100%; }
-  .cart-panel { max-width: 100%; } .floating-cart-btn { bottom: 20px; right: 20px; }
+  .cart-panel { max-width: 100%; } .floating-cart-btn { bottom: 18px; right: 18px; }
 }
 @media (min-width: 768px) { .img-grid { grid-template-columns: 1fr 1fr; } .contact-buttons { gap: 1.5rem; } }
