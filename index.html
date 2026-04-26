@@ -1,78 +1,142 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#d4a373">
-  <title>Зерно | Кофейня</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3E2723">
+    <title>Кофейня Зерно — Свежеобжаренный кофе</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icons/favicon.png" type="image/png">
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="logo">☕ Зерно</div>
-      <nav class="nav">
-        <a href="#about">Атмосфера</a>
-        <a href="#menu">Меню</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo">☕ Зерно</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1 class="hero-title">Кофе, который будит смыслы</h1>
-        <p class="hero-sub">Свежая обжарка, точная экстракция и атмосфера, где хочется остаться.</p>
-        <a href="#menu" class="btn btn-primary">Открыть меню</a>
-      </div>
-    </section>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Добро пожаловать в «Зерно»</h1>
+                <p>Свежеобжаренный кофе, уютная атмосфера и лучшие десерты в городе.</p>
+                <a href="#menu" class="btn">Смотреть меню</a>
+            </div>
+        </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">Атмосфера</h2>
-        <p>Мы создаём пространство для ваших идей, встреч и тишины.</p>
-      </div>
-    </section>
+        <section id="menu" class="menu-section">
+            <h2>Наше Меню</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Эспрессо</h3>
+                    <p>Классический крепкий кофе</p>
+                    <span>150 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Капучино</h3>
+                    <p>Нежная молочная пенка</p>
+                    <span>220 ₽</span>
+                </div>                <div class="menu-item">
+                    <h3>Латте</h3>
+                    <p>Мягкий сливочный вкус</p>
+                    <span>240 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Американо</h3>
+                    <p>Лёгкий и ароматный</p>
+                    <span>180 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Флэт Уайт</h3>
+                    <p>Двойной эспрессо с молоком</p>
+                    <span>250 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Круассан</h3>
+                    <p>Свежая выпечка с маслом</p>
+                    <span>180 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Чизкейк</h3>
+                    <p>Нежный десерт</p>
+                    <span>280 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Кофе в зёрнах (1 кг)</h3>
+                    <p>Свежая обжарка, доставка</p>
+                    <span>1 200 ₽</span>
+                </div>
+            </div>
+        </section>
 
-    <section id="menu" class="section">
-      <div class="container">
-        <h2 class="section-title">Меню</h2>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <span class="menu-name">Эспрессо</span>
-            <span class="menu-price">180 ₽</span>
-          </div>
-          <div class="menu-item">
-            <span class="menu-name">Капучино</span>
-            <span class="menu-price">250 ₽</span>
-          </div>
-          <div class="menu-item">
-            <span class="menu-name">Латте</span>
-            <span class="menu-price">270 ₽</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="about" class="about-section">
+            <h2>О Нас</h2>
+            <p>Мы обжариваем зёрна самостоятельно каждую неделю. Наша цель — дать вам не просто кофе, а настоящий момент отдыха среди городской суеты. Каждая чашка готовится с любовью.</p>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🌱</span>
+                    <h3>Свежая обжарка</h3>
+                    <p>Каждую неделю</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🚚</span>
+                    <h3>Доставка</h3>
+                    <p>По всему городу</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💼</span>
+                    <h3>Для бизнеса</h3>                    <p>Спецусловия для офисов</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Контакты</h2>
-        <p>xxxxx</p>
-      </div>
-    </section>
-  </main>
+        <section id="contacts" class="contacts-section">
+            <h2>Контакты</h2>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <h3>📍 Адрес</h3>
+                    <p>г. Москва, ул. Примерная, д. 123</p>
+                    <p>(метро Центральная)</p>
+                </div>
+                <div class="contact-card">
+                    <h3>📞 Телефон</h3>
+                    <p>+7 (999) 123-45-67</p>
+                    <p>Ежедневно с 8:00 до 22:00</p>
+                </div>
+                <div class="contact-card">
+                    <h3>✉️ Email</h3>
+                    <p>info@kofeynya-zerno.ru</p>
+                    <p>zakaz@kofeynya-zerno.ru</p>
+                </div>
+                <div class="contact-card">
+                    <h3>💬 Соцсети</h3>
+                    <p>Telegram: @kofeynya_zerno</p>
+                    <p>VK: vk.com/kofeynya_zerno</p>
+                </div>
+            </div>
+            <div class="map-placeholder">
+                <p>🗺️ Карта проезда</p>
+                <p class="map-note">(Здесь будет интерактивная карта)</p>
+            </div>
+        </section>
+    </main>
 
-  <footer class="footer">
-    <div class="container">© 2025 Кофейня «Зерно»</div>
-  </footer>
+    <footer>
+        <p>&copy; 2024 Кофейня «Зерно». Все права защищены.</p>
+        <p class="footer-note">Сайт создан для демонстрации</p>
+    </footer>
 
-  <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
